@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cronograma de Estudos - TCU (22/02/2026)</title>
+  <style>
+    :root {
+      --bg: #fff7fa;
+      --card: #ffffff;
+      --muted: #6b5568;
+      --accent: #ec4899;
+      --accent-2: #f472b6;
+      --glass: rgba(255, 255, 255, 0.65);
+      --shadow: 0 6px 18px rgba(236, 72, 153, 0.15);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #ffe4ef);
+      color: #2d1b2e;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .title {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #4a154b;
+    }
+
+    p.lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      background: var(--card);
+      padding: 8px 12px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    .grid-weeks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .grid-weeks {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .phase {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border-left: 6px solid var(--accent);
+    }
+
+    .phase h2 {
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      color: #c02677;
+    }
+
+    .phase p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .weeks-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .weeks-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .week {
+      background: linear-gradient(180deg, rgba(236, 72, 153, 0.05), transparent);
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid rgba(236, 72, 153, 0.15);
+    }
+
+    .week h3 {
+      margin: 0;
+      font-size: 14px;
+      color: #be185d;
+    }
+
+    .week .days {
+      margin-top: 8px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .day {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .day .badge {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .b1 { background: linear-gradient(135deg, var(--accent), #f9a8d4); }
+    .b2 { background: linear-gradient(135deg, var(--accent-2), #fbcfe8); color: #4a154b; }
+    .b3 { background: linear-gradient(135deg, #fda4af, #f472b6); }
+
+    .day .content {
+      flex: 1;
+    }
+
+    .day .content strong {
+      display: block;
+      color: #4a154b;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    aside {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #db2777;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(236, 72, 153, 0.25);
+      color: var(--muted);
+      box-shadow: none;
+    }
+
+    .timeline {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      justify-content: center;
+    }
+
+    .timeline .pill {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--glass);
+      border: 1px solid rgba(236, 72, 153, 0.15);
+      font-size: 13px;
+      color: #a21caf;
+      backdrop-filter: blur(4px);
+    }
+
+    .detailed {
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .card h4 {
+      margin: 0 0 8px 0;
+      color: #c02677;
+    }
+
+    ol.muted, p.muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Responsividade geral */
+    @media (max-width: 480px) {
+      body {
+        font-size: 15px;
+      }
+      .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* print */
+    @media print {
+      body {
+        background: #fff;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+      header .logo,
+      .btn,
+      aside {
+        display: none;
+      }
+      .grid-weeks {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">
+        <div class="logo">TCU</div>
+        <div>
+          <h1>Cronograma de Estudos — Concurso TCU</h1>
+          <p class="lead">Prova em 22 de fevereiro de 2026 — plano de 16 semanas, foco em aprendizagem ativa, revisões e questões.</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="chip">Carga sugerida: 3–4h/dia</div>
+        <div class="chip">Domingos: revisão/questões</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid-weeks">
+        <div class="phase">
+          <h2>Fase 1 — Fundamentos & Base Jurídica (Nov)</h2>
+          <p>Semanas 1 a 4 — Constituição, Direito Administrativo, Administração e Raciocínio Analítico.</p>
+
+          <div class="weeks-list">
+            <div class="week">
+              <h3>Semana 1 — Raciocínio Analítico</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Argumentação e senso crítico</strong><span class="small">Leitura ativa + fichamento</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Tipos de argumentos</strong><span class="small">Falácias e apelos — exemplos práticos</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Comunicação de argumentos</strong><span class="small">Resumo e explicação em voz alta</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Exercícios</strong><span class="small">Questões e análise de erros</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão + flashcards</strong><span class="small">Criar 30 cartões</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 2 — Direito Constitucional I</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Constituição: conceito e aplicabilidade</strong><span class="small">Leitura da CF - capítulos iniciais</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Direitos e garantias fundamentais</strong><span class="small">Habeas corpus, MS, habeas data</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Organização do Estado</strong><span class="small">União, estados, municípios, DF</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Poderes e freios</strong><span class="small">Legislativo, executivo, judiciário</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão e questões</strong><span class="small">10–15 questões</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 3 — Direito Administrativo I</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Ato administrativo</strong><span class="small">Requisitos, atributos e espécies</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Agentes públicos</strong><span class="small">Lei 8.112/1990 — responsabilidades</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Poderes da administração</strong><span class="small">Hierárquico, disciplinar, de polícia</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Regime jurídico</strong><span class="small">Princípios expressos e implícitos</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão + questões</strong><span class="small">10 questões</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 4 — Administração Pública</h3>
+              <div class="days">
+                <div class="day"><div class="badge b3">Seg</div><div class="content"><strong>Abordagens e evolução</strong><span class="small">Clássica, burocrática, sistêmica</span></div></div>
+                <div class="day"><div class="badge b1">Ter</div><div class="content"><strong>Funções da administração</strong><span class="small">Planejamento, organização, direção, controle</span></div></div>
+                <div class="day"><div class="badge b2">Qua</div><div class="content"><strong>Gestão de pessoas</strong><span class="small">Motivação, liderança, desempenho</span></div></div>
+                <div class="day"><div class="badge b3">Qui</div><div class="content"><strong>Gestão de processos e projetos</strong><span class="small">Mapeamento, melhoria, metodologias ágeis</span></div></div>
+                <div class="day"><div class="badge b1">Sex</div><div class="content"><strong>ESG e materiais</strong><span class="small">Noções e aplicação</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase">
+          <h2>Fase 2 — Controle & Auditoria (Dez)</h2>
+          <p>Semanas 5 a 7 — Controle externo, TCU, auditoria e normas.</p>
+
+          <div class="weeks-list">
+            <div class="week">
+              <h3>Semana 5 — Controle Externo</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Conceitos e formas de controle</strong><span class="small">Interno x externo, parlamentar</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Controle pelos tribunais de contas</strong><span class="small">Competências do TCU e TCEs</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Lei 8.429/1992</strong><span class="small">Improbidade administrativa: estudo de casos</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Sistemas jurisdicionais</strong><span class="small">Contencioso administrativo</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão + questões</strong><span class="small">20 questões (ênfase jurídica)</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 6 — Auditoria Governamental I</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Conceito e tipos de auditoria</strong><span class="small">Conformidade, operacional, financeira</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Normas (ISSAI / NBASP)</strong><span class="small">Princípios e ética</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Planejamento de auditoria</strong><span class="small">Materialidade, risco, amostragem</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Execução: testes e papéis</strong><span class="small">Técnicas e procedimentos</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Questões práticas</strong><span class="small">Simulados curtos</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 7 — Auditoria Governamental II</h3>
+              <div class="days">
+                <div class="day"><div class="badge b3">Seg</div><div class="content"><strong>Achados e evidências</strong><span class="small">Matriz de achados</span></div></div>
+                <div class="day"><div class="badge b1">Ter</div><div class="content"><strong>Comunicação dos resultados</strong><span class="small">Relatórios e recomendações</span></div></div>
+                <div class="day"><div class="badge b2">Qua</div><div class="content"><strong>Casos práticos</strong><span class="small">Analisar relatórios do TCU</span></div></div>
+                <div class="day"><div class="badge b3">Qui</div><div class="content"><strong>Revisão final</strong><span class="small">Resumo e flashcards</span></div></div>
+                <div class="day"><div class="badge b1">Sex</div><div class="content"><strong>Simulado (Controle + Auditoria)</strong><span class="small">50 questões</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase">
+          <h2>Fase 3 — Gestão & Processos de TI (Jan)</h2>
+          <p>Semanas 8 a 10 — ITIL, COBIT, contratações de TI, gestão de projetos e ESG.</p>
+
+          <div class="weeks-list">
+            <div class="week">
+              <h3>Semana 8 — Gestão de TI</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>ITIL v4 e serviços</strong><span class="small">Conceitos e práticas</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>COBIT 2019</strong><span class="small">Governança e objetivos</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Métodos ágeis</strong><span class="small">Scrum, Kanban, TDD/BDD</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Práticas e casos</strong><span class="small">Exercícios e estudo de caso</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão</strong><span class="small">Questões e flashcards</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 9 — Contratações de TI</h3>
+              <div class="days">
+                <div class="day"><div class="badge b3">Seg</div><div class="content"><strong>ETP, TR, Projeto Básico</strong><span class="small">Documentos e responsabilidades</span></div></div>
+                <div class="day"><div class="badge b1">Ter</div><div class="content"><strong>Lei 14.133/2021</strong><span class="small">Aspectos aplicáveis a TI</span></div></div>
+                <div class="day"><div class="badge b2">Qua</div><div class="content"><strong>Gestão de contratos</strong><span class="small">SLA, RACI, penalidades</span></div></div>
+                <div class="day"><div class="badge b3">Qui</div><div class="content"><strong>Riscos e auditoria</strong><span class="small">Controles em contratos de TI</span></div></div>
+                <div class="day"><div class="badge b1">Sex</div><div class="content"><strong>Questões</strong><span class="small">Simulado curto</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 10 — Administração (com foco em projetos)</h3>
+              <div class="days">
+                <div class="day"><div class="badge b2">Seg</div><div class="content"><strong>Gestão de pessoas</strong><span class="small">Equilíbrio organizacional</span></div></div>
+                <div class="day"><div class="badge b3">Ter</div><div class="content"><strong>Gestão de processos</strong><span class="small">Mapeamento e melhorias</span></div></div>
+                <div class="day"><div class="badge b1">Qua</div><div class="content"><strong>Gestão de projetos</strong><span class="small">Modelos, etapas, análise de projetos</span></div></div>
+                <div class="day"><div class="badge b2">Qui</div><div class="content"><strong>Metodologias ágeis aplicadas</strong><span class="small">Casos práticos</span></div></div>
+                <div class="day"><div class="badge b3">Sex</div><div class="content"><strong>ESG em administração</strong><span class="small">Práticas e indicadores</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="phase">
+          <h2>Fase 4 — Infraestrutura, Dados e Nuvem (Jan–Fev)</h2>
+          <p>Semanas 11 a 14 — Redes, servidores, segurança, DBs, cloud e DR.</p>
+
+          <div class="weeks-list">
+            <div class="week">
+              <h3>Semana 11 — Infraestrutura I</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Redes e protocolos</strong><span class="small">TCP/UDP, BGP, OSPF, VLANs</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Sistemas operacionais</strong><span class="small">Administração Linux/Windows</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>Virtualização e storage</strong><span class="small">VMs, SAN, NAS, RAID</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Backup e recuperação</strong><span class="small">RPO/RTO, snapshots</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Questões práticas</strong><span class="small">Exercícios técnicos</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 12 — Infraestrutura II (Segurança)</h3>
+              <div class="days">
+                <div class="day"><div class="badge b3">Seg</div><div class="content"><strong>Hardening e firewalls</strong><span class="small">NGFW, IDS/IPS, VPNs</span></div></div>
+                <div class="day"><div class="badge b1">Ter</div><div class="content"><strong>Monitoramento e automação</strong><span class="small">Zabbix, Grafana, scripts</span></div></div>
+                <div class="day"><div class="badge b2">Qua</div><div class="content"><strong>Alta disponibilidade</strong><span class="small">Clusters, failover, balanceamento</span></div></div>
+                <div class="day"><div class="badge b3">Qui</div><div class="content"><strong>Testes de DR</strong><span class="small">Planos e exercícios</span></div></div>
+                <div class="day"><div class="badge b1">Sex</div><div class="content"><strong>Simulado técnico</strong><span class="small">50 questões</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 13 — Engenharia de Dados</h3>
+              <div class="days">
+                <div class="day"><div class="badge b2">Seg</div><div class="content"><strong>Bancos e modelagem</strong><span class="small">Oracle, SQL Server, NoSQL</span></div></div>
+                <div class="day"><div class="badge b3">Ter</div><div class="content"><strong>ETL e pipelines</strong><span class="small">Versionamento, checkpoints</span></div></div>
+                <div class="day"><div class="badge b1">Qua</div><div class="content"><strong>Governança de dados</strong><span class="small">Qualidade, linhagem, catálogo</span></div></div>
+                <div class="day"><div class="badge b2">Qui</div><div class="content"><strong>Integração com nuvem</strong><span class="small">S3, Blob, conectores</span></div></div>
+                <div class="day"><div class="badge b3">Sex</div><div class="content"><strong>Questões práticas</strong><span class="small">Exercícios e estudos de caso</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 14 — Computação em Nuvem</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Modelos e serviços</strong><span class="small">IaaS/PaaS/SaaS e arquiteturas</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Segurança em nuvem</strong><span class="small">IAM, KMS, Zero Trust</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>IaC e DevOps</strong><span class="small">Terraform, CI/CD</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Governança e custos</strong><span class="small">FinOps e compliance</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão + simulado</strong><span class="small">50 questões</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 5 -->
+        <div class="phase">
+          <h2>Fase 5 — IA & Revisão Final (Fev)</h2>
+          <p>Semanas 15 e 16 — Inteligência artificial, ética e revisão intensiva para prova.</p>
+
+          <div class="weeks-list">
+            <div class="week">
+              <h3>Semana 15 — Inteligência Artificial</h3>
+              <div class="days">
+                <div class="day"><div class="badge b1">Seg</div><div class="content"><strong>Aprendizado de máquina</strong><span class="small">Supervisionado, não supervisionado</span></div></div>
+                <div class="day"><div class="badge b2">Ter</div><div class="content"><strong>Redes neurais & NLP</strong><span class="small">Modelos e aplicações</span></div></div>
+                <div class="day"><div class="badge b3">Qua</div><div class="content"><strong>IA generativa e MLOps</strong><span class="small">Deploy e integração</span></div></div>
+                <div class="day"><div class="badge b1">Qui</div><div class="content"><strong>Ética, LGPD e vieses</strong><span class="small">Transparência e responsabilidade</span></div></div>
+                <div class="day"><div class="badge b2">Sex</div><div class="content"><strong>Revisão final</strong><span class="small">Flashcards + questões</span></div></div>
+              </div>
+            </div>
+
+            <div class="week">
+              <h3>Semana 16 — Revisão Geral e Simulados</h3>
+              <div class="days">
+                <div class="day"><div class="badge b3">Seg</div><div class="content"><strong>Revisão condensada (jurídico)</strong><span class="small">Leis, princípios e principais pontos</span></div></div>
+                <div class="day"><div class="badge b1">Ter</div><div class="content"><strong>Revisão condensada (técnico)</strong><span class="small">TI, infraestrutura e auditoria</span></div></div>
+                <div class="day"><div class="badge b2">Qua</div><div class="content"><strong>Simulado completo 1</strong><span class="small">Mistura de temas — tempo cronometrado</span></div></div>
+                <div class="day"><div class="badge b3">Qui</div><div class="content"><strong>Simulado completo 2</strong><span class="small">Análise de erros e ajustes finais</span></div></div>
+                <div class="day"><div class="badge b1">Sex</div><div class="content"><strong>Relaxamento e revisão leve</strong><span class="small">Boas práticas pré-prova</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <aside>
+        <button class="btn" onclick="downloadHTML()">Baixar HTML</button>
+        <button class="btn secondary" onclick="window.print()">Imprimir</button>
+        <div class="timeline">
+          <div class="pill">Revisões: 24h / 7 dias / 30 dias</div>
+          <div class="pill">Simulados mensais e 2 completos antes da prova</div>
+          <div class="pill">Anki recomendado para flashcards</div>
+        </div>
+      </aside>
+
+      <section class="detailed">
+        <div class="card">
+          <h4>Como usar este cronograma</h4>
+          <ol class="muted">
+            <li>Estude ativamente: faça resumos e explique em voz alta.</li>
+            <li>Ao finalizar cada semana, faça 1 simulado curto e corrija erros.</li>
+            <li>Use Anki para memorização de leis e conceitos-chave.</li>
+            <li>Adapte a carga horária conforme seu ritmo — mantenha consistência.</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h4>Links rápidos (sugestão de materiais)</h4>
+          <p class="muted">Inclua aqui links para: Constituição, Leis 8.429/92, 9.784/99, 14.133/21, NBASP/ISSAI e bancos de questões.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    function downloadHTML(){
+      const html = document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'cronograma-tcu-mariaeduarda.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
+ 
